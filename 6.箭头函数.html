@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <input type="button" value="点击" id="btn">
+    <script>
+        //注意：
+        //1.箭头函数是为了简化代码
+        //2.但是它的实际意义并不仅仅是简化代码。更重要的是它解决了js中匿名函数中this的指向问题
+        
+        //声明：咱们现在讨论的是this指向问题，容易跟变量的作用域问题相混淆。
+        //this是什么？
+        //在js里，this是一个关键字，它用来指向当前被执行方法的执行环境上下文
+        //'use strict';
+
+        //在js里，所谓的执行环境上下文就是谁主动调用了该函数。
+        //在JS里，执行环境上下文，是在执行时绑定的，不是函数定义是绑定的。
+
+            // function test(){
+            //     console.log('aaa');
+            // }
+            // test();
+
+            function test(){
+                console.log(this);
+            }
+            // test();//window,严格模式下this显示的是undefined
+            //window.test();严格模式下this显示的是window
+
+            document.getElementById('btn').onclick=test;
+            
+            //总结：
+            //1.在箭头函数里，this是在定义时绑定的
+            //2.this在箭头函数中this绑定时看的是this所绑定的函数定义在哪个对象下，则它的this就是指向这个对象
+            //3.如果有对象嵌套的情况，则this绑定到最近的一层对象上
+            var name='在window';
+            var obj ={
+                name:'我的大学',
+                show:function(){
+                    console.log(this.name)
+                },
+                say:function(){
+                    setTimeout(()=>{
+                        console.log(this.name);
+                    },1000);
+                },
+                test:function(){  //函数返回函数，是一个闭包
+                    return function(){
+                        console.log(this.name);
+                    }
+                }
+            }
+
+          
+
+            obj.show();//我的大学
+            obj.say();//在window  执行的匿名函数，setTimeout是一个函数，这个函数的执行环境上下文是window,上面的在window就是在window中声明的，所以返回的是在window
+            // 用了箭头函数之后就是我的大学了
+            // var funcObj=obj.test()();//在window
+            // funcObj();
+    </script>
+</body>
+</html>

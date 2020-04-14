@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //字符串扩展
+        //1.for...of
+        var str='I am a big brother';
+        for(let item of str){
+            console.log(item);
+        }
+        //它得到的结果就是把字符串一个一个拆分开了
+        //2.一套判断字符串是否包含另一个字串的api,他们的返回值都是bool类型
+        //includes() / startsWith() / endsWith()
+        console.log(str.includes('am'));//意思是是否包含一个am的子串
+        console.log(str.startsWith('I'));//意思是开头如果是上面对应的就返回true，否则false
+        console.log(str.endsWith('er'));
+        //3.字符串复制n遍：repeat()
+        //注意不能是负数否则会报错
+        console.log(str.repeat(3));//表示这个字符串我重复了三遍
+        //4.字符串补全
+        //padStart(), padEnd()
+        console.log(str.padStart(30,'x'));//表示如果原始字符串不够30位，我就在字符串头前补x，假如这个字符串不够30个，是27位，那我就需要在头前补3个x
+        //5.模板字符串（重要）
+        //用在大量的字符串拼接
+        var name='wlh';
+        var age=18;
+        var str='hello!'+name+',你今年是'+age+'了吗？';//这是以前的用法
+        var str1=`hello,${name}，你今年是${age}了吗？`; //${}这表示是一个占位符
+        //特别注意：模板字符串两边的点不是单引号，而是键盘上数字1键打出的字符
+        console.log(str);
+        console.log(str1);
+    </script>
+</body>
+</html>

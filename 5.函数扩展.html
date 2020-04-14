@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //函数扩展
+        //1.形参允许有默认值  如果有默认值，那么参数必须放在末尾
+        function func(name,age=18){
+
+        }
+        //2.箭头函数
+        //说白了就是lambda表达式
+        var func=function(){
+            console.log('hello');
+        }
+        //这两个完全等价
+        var lam=()=>{
+            console.log('hello');
+        }
+
+        func=function(a,b){
+            return a+b;
+        }
+        lam=(a,b)=>{
+            a+b;  //如果只有一条语句，并且这条语句的值就是返回值的话，就不用写return了
+        }
+
+        func=function(a){
+            return a+10;
+        }
+        lam=a=>
+        //{   //如果只有一个参数，圆括号就不需要了
+            a+10;  //只有一条语句了，花括号也可以省了
+        //}
+
+        //注意：
+        //1.箭头函数是为了简化代码
+        //2.但是它的实际意义并不仅仅是简化代码。更重要的是它解决了js中匿名函数中this的指向问题
+        
+
+    </script>
+</body>
+</html>
